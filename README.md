@@ -11,11 +11,15 @@ A simple website made of plain HTML/CSS/JavaScript, with no build step. It's mea
 | `booking.html` | Online booking: treatment → day & time → details → confirmation |
 | `om.html` | About Nancy, education, values |
 | `kontakt.html` | Contact, opening hours, MobilePay, gift cards |
+| `permanent-makeup.html` | Permanent makeup brows: techniques, comparison guide, prices, certificates, aftercare, FAQ |
 | `privatlivspolitik.html` / `handelsbetingelser.html` | Privacy policy, terms & cancellations |
 
-## Changing prices, treatments or opening hours
-Everything is in **`js/data.js`**. The price page and the booking calendar both read from there, so a price only needs changing in one place.
-Menu and footer: `js/layout.js`. Colours and fonts: the top of `css/style.css`.
+## Changing prices, treatments, FAQ or the menu
+1. Edit **`data/site.json`** (prices, treatments, FAQ, contact details, booking setup).
+2. Run the build: `powershell -ExecutionPolicy Bypass -File tools\build.ps1`
+
+The build writes the price list, menu, footer, FAQ and Google data **straight into the HTML pages**, so search engines and AI crawlers (ChatGPT, Perplexity…) can read them without JavaScript. It also writes `js/data.js` (for the booking calendar), `sitemap.xml`, `robots.txt` and `llms.txt`.
+Don't edit the content between `<!-- BUILD:… -->` markers in the pages, because the build replaces it. The menu and footer templates live in `tools/build.ps1`. Colours and fonts are at the top of `css/style.css`.
 
 ## Booking: demo now, EasyPractice when the site goes live
 The calendar currently runs in **demo mode** (`booking.mode: "demo"` in `js/data.js`): it shows example free times and sends nothing.

@@ -302,6 +302,24 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--taupe); out
 .hours td:last-child { text-align: right; }
 .qr { width: 160px; border-radius: 8px; }
 
+/* FAQ */
+.faq { margin-top: 24px; border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary {
+  cursor: pointer; list-style: none; padding: 18px 40px 18px 0; position: relative;
+  font-family: var(--serif); font-size: 1.3rem; font-weight: 500;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; position: absolute; right: 6px; top: 14px; font-size: 1.6rem; color: var(--taupe); font-family: var(--sans); font-weight: 300; }
+.faq-item[open] summary::after { content: "–"; }
+.faq-item p { margin: 0 0 20px; color: var(--ink-soft); }
+
+/* Certificate */
+.cert { margin: 0; }
+.cert img { border-radius: 8px; box-shadow: var(--shadow); width: 100%; aspect-ratio: auto; object-fit: contain; background: var(--white); }
+.cert figcaption { font-size: .85rem; color: var(--ink-soft); margin-top: 10px; text-align: center; }
+.split .cert img { aspect-ratio: auto; }
+
 /* Legal text */
 .prose { max-width: 760px; margin: 0 auto; }
 .prose h2 { font-size: 1.8rem; margin-top: 1.6em; }
