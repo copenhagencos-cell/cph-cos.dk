@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Behandlinger & priser – Copenhagen Cosmetology</title>
+  <meta name="description" content="Priser på ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks og kropsbehandlinger hos Copenhagen Cosmetology i Herlev.">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="behandlinger">
+
+<main>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Behandlinger & priser</span>
+      <h1>Find din behandling</h1>
+      <p class="lead">Alle behandlinger tilpasses din hud og dine ønsker. Klik på <strong>Book</strong> ud for en behandling for at vælge dag og tid.</p>
+      <nav class="cat-nav" id="cat-nav" aria-label="Kategorier"></nav>
+    </div>
+  </div>
+
+  <div class="wrap" id="price-root"></div>
+
+  <section>
+    <div class="wrap">
+      <div class="price-cat" id="klippekort" style="padding-top:0">
+        <span class="eyebrow">Spar med klippekort</span>
+        <h2>Klippekort til ansigtsbehandlinger</h2>
+        <p class="muted">Klippekort købes ved behandlingen. Kontakt mig gerne, hvis du har spørgsmål.</p>
+        <div class="table-scroll">
+          <table class="package-table" id="packages">
+            <thead><tr><th>Klippekort</th><th class="num">Normalpris</th><th class="num">Klippekortpris</th><th class="num">Pr. behandling</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="note">
+        <strong>Afbudspolitik:</strong> Afbud skal ske senest 24 timer før din aftale. Ved afbud samme dag betales 50 % af behandlingen, og ved udeblivelse betales 100 %.
+        <a href="handelsbetingelser.html">Læs handelsbetingelserne</a>.
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>I tvivl om, hvad din hud har brug for?</h2>
+      <p class="lead">Kontakt mig for en gratis konsultation og hudanalyse, eller book direkte online.</p>
+      <a class="btn" href="booking.html">Book tid</a>
+    </div>
+  </section>
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  (function () {
+    var root = document.getElementById("price-root");
+    var catNav = document.getElementById("cat-nav");
+
+    catNav.innerHTML = CPH.categories.map(function (c) {
+      return '<a class="chip" href="#' + c.id + '">' + c.name + '</a>';
+    }).join("") + '<a class="chip" href="#klippekort">Klippekort</a>';
+
+    function item(s, comingSoon) {
+      var book = comingSoon || s.bookable === false
+        ? '<span class="btn btn-small btn-outline" aria-disabled="true" style="opacity:.5;cursor:default">Snart</span>'
+        : '<a class="btn btn-small" href="booking.html?service=' + s.id + '">Book</a>';
+      return '<li class="price-item"><div><h4>' + s.name + '</h4>' + (s.desc ? '<p>' + s.desc + '</p>' : '') + '</div>' +
+        '<div class="price-meta"><strong>' + CPH.formatPrice(s.price) + '</strong><small>' + CPH.formatDuration(s.duration) + '</small></div>' +
+        book + '</li>';
+    }
+
+    root.innerHTML = CPH.categories.map(function (c) {
+      var list = CPH.services.filter(function (s) { return s.cat === c.id; });
+      var body = "";
+      var groups = [];
+      list.forEach(function (s) { if (s.group && groups.indexOf(s.group) < 0) groups.push(s.group); });
+      if (groups.length) {
+        body = groups.map(function (g) {
+          return '<h3 class="subhead">' + g + '</h3><ul class="price-list">' +
+            list.filter(function (s) { return s.group === g; }).map(function (s) { return item(s, c.comingSoon); }).join("") + '</ul>';
+        }).join("");
+      } else {
+        body = '<ul class="price-list">' + list.map(function (s) { return item(s, c.comingSoon); }).join("") + '</ul>';
+      }
+      var extra = "";
+      if (c.id === "krop") extra = '<p class="note">Kontakt mig for priser på kropsbehandlinger – de oplyses ved booking.</p>';
+      if (c.id === "pmu") extra = '<p class="note">Permanent makeup er under professionel forberedelse og kan bookes snart. Priserne er vejledende.</p>';
+      return '<div class="price-cat" id="' + c.id + '"><div class="price-cat-head">' +
+        '<img src="' + c.img + '" alt="" loading="lazy"><div><h2>' + c.name + '</h2><p class="lead">' + c.intro + '</p></div></div>' +
+        extra + body + '</div>';
+    }).join("");
+
+    document.querySelector("#packages tbody").innerHTML = CPH.packages.map(function (p) {
+      return '<tr><td>' + p.name + '</td><td class="num"><s>' + CPH.formatPrice(p.normal) + '</s></td>' +
+        '<td class="num"><strong>' + CPH.formatPrice(p.price) + '</strong></td><td class="num">' + CPH.formatPrice(p.each) + '</td></tr>';
+    }).join("");
+
+    if (location.hash) {
+      var t = document.querySelector(location.hash);
+      if (t) setTimeout(function () { t.scrollIntoView(); }, 50);
+    }
+  })();
+</script>
+</body>
+</html>

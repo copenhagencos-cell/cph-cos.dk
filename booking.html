@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="da">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book tid – Copenhagen Cosmetology</title>
+  <meta name="description" content="Book din behandling online hos Copenhagen Cosmetology. Vælg behandling, dag og tidspunkt.">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="booking">
+
+<main>
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Online booking</span>
+      <h1>Book din tid</h1>
+      <p class="lead">Vælg behandling, dag og tidspunkt. Du får en bekræftelse på e-mail.</p>
+    </div>
+  </div>
+
+  <section style="padding-top:48px">
+    <div class="wrap" id="booking-root">
+
+      <div class="demo-banner" id="demo-banner" hidden>
+        <strong>Forhåndsvisning:</strong> Kalenderen viser eksempler på ledige tider, og der sendes ingen booking.
+        Når siden går live, kobles den til EasyPractice, så tiderne er Nancys rigtige kalender.
+      </div>
+
+      <ol class="steps" id="steps">
+        <li data-step="1">Behandling</li>
+        <li data-step="2">Dag & tid</li>
+        <li data-step="3">Dine oplysninger</li>
+        <li data-step="4">Bekræftelse</li>
+      </ol>
+
+      <div class="booking-layout">
+        <div>
+          <!-- Step 1 -->
+          <div class="panel" data-panel="1">
+            <h2>Vælg behandling</h2>
+            <div class="svc-tabs" id="svc-tabs" role="tablist"></div>
+            <ul class="svc-list" id="svc-list"></ul>
+            <div class="step-actions"><span></span><button class="btn" id="to-2" disabled>Vælg dag & tid →</button></div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="panel" data-panel="2" hidden>
+            <h2>Vælg dag og tidspunkt</h2>
+            <div class="cal-cols">
+              <div>
+                <div class="cal-head">
+                  <button class="cal-nav" id="cal-prev" aria-label="Forrige måned">‹</button>
+                  <h3 id="cal-title"></h3>
+                  <button class="cal-nav" id="cal-next" aria-label="Næste måned">›</button>
+                </div>
+                <div class="cal-grid" id="cal-grid"></div>
+                <div class="cal-legend"><span>Ledige tider</span><span class="closed">Lukket / optaget</span></div>
+              </div>
+              <div>
+                <h3 id="times-title" style="font-size:1.25rem">Vælg en dag</h3>
+                <p class="muted" id="times-hint">Dage med en grøn prik har ledige tider.</p>
+                <div class="times" id="times"></div>
+              </div>
+            </div>
+            <div class="step-actions">
+              <button class="btn btn-outline" data-back="1">← Tilbage</button>
+              <button class="btn" id="to-3" disabled>Fortsæt →</button>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="panel" data-panel="3" hidden>
+            <h2>Dine oplysninger</h2>
+            <form id="details" novalidate>
+              <div class="form-grid">
+                <div><label for="f-name">Fulde navn *</label><input id="f-name" name="name" autocomplete="name" required><div class="field-error">Skriv dit navn</div></div>
+                <div><label for="f-phone">Telefon *</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required><div class="field-error">Skriv et gyldigt telefonnummer</div></div>
+                <div class="full"><label for="f-email">E-mail *</label><input id="f-email" name="email" type="email" autocomplete="email" required><div class="field-error">Skriv en gyldig e-mail</div></div>
+                <div class="full"><label for="f-note">Besked (valgfri)</label><textarea id="f-note" name="note" rows="3" placeholder="Fx hudproblemer, allergier eller ønsker"></textarea></div>
+                <div class="full">
+                  <label class="check"><input type="checkbox" id="f-terms" required>
+                    <span>Jeg accepterer <a href="handelsbetingelser.html" target="_blank">afbudspolitikken</a>: afbud senest 24 timer før. Ved afbud samme dag betales 50 %, ved udeblivelse 100 %.</span></label>
+                  <div class="field-error">Du skal acceptere afbudspolitikken</div>
+                </div>
+              </div>
+              <div class="step-actions">
+                <button type="button" class="btn btn-outline" data-back="2">← Tilbage</button>
+                <button type="submit" class="btn">Bekræft booking</button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="panel center" data-panel="4" hidden>
+            <div class="confirm-icon">✓</div>
+            <h2>Tak for din booking!</h2>
+            <p class="lead" id="confirm-text"></p>
+            <p class="muted" id="confirm-demo" hidden>(Forhåndsvisning: der er ikke sendt nogen booking.)</p>
+            <div class="hero-actions" style="justify-content:center">
+              <button class="btn btn-outline" id="ics">Tilføj til min kalender</button>
+              <a class="btn" href="index.html">Til forsiden</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="panel summary" id="summary">
+          <h3>Din booking</h3>
+          <dl>
+            <dt>Behandling</dt><dd id="s-service">–</dd>
+            <dt>Varighed</dt><dd id="s-duration">–</dd>
+            <dt>Dag</dt><dd id="s-date">–</dd>
+            <dt>Tidspunkt</dt><dd id="s-time">–</dd>
+          </dl>
+          <div class="total"><span>Pris</span><strong id="s-price">–</strong></div>
+          <p class="muted" style="margin-top:16px">Betaling med MobilePay eller kontant ved behandlingen. Adressen sendes med bekræftelsen.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/booking.js"></script>
+</body>
+</html>
