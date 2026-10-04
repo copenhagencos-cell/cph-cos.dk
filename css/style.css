@@ -31,7 +31,9 @@ body {
 img { max-width: 100%; display: block; }
 a { color: var(--taupe-dark); }
 h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0 0 .5em; color: var(--ink); }
-h1 { font-size: clamp(2.4rem, 5.5vw, 4.2rem); }
+h1, .hero-title { font-size: clamp(2.4rem, 5.5vw, 4.2rem); }
+.hero-title { font-family: var(--serif); font-weight: 500; line-height: 1.15; margin: 0 0 .5em; }
+h1.eyebrow { font-family: var(--sans); font-size: .78rem; line-height: 1.65; margin: 0 0 .8rem; color: var(--taupe); }
 h2 { font-size: clamp(1.9rem, 3.6vw, 2.8rem); }
 h3 { font-size: 1.5rem; }
 p { margin: 0 0 1em; }

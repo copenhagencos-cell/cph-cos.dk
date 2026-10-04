@@ -3,13 +3,60 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Copenhagen Cosmetology – Ansigtsbehandling og skønhed i Herlev</title>
-  <meta name="description" content="Lægeeksamineret kosmetolog i Herlev. Skræddersyede ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks og kropsbehandlinger. Book tid online.">
-  <link rel="icon" href="assets/img/logo.png">
+  <title>Ansigtsbehandling i Herlev &amp; København | Copenhagen Cosmetology</title>
+  <!-- SEO -->
+  <meta name="description" content="Lægeeksamineret kosmetolog i Herlev ved København. Skræddersyede ansigtsbehandlinger, microneedling, lash lift, brow lift, negle, voks og kropsbehandlinger. Book tid online.">
+  <!-- Test site: keep out of Google until cph-cos.dk points here. Remove this robots line at launch. -->
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://cph-cos.dk/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="da_DK">
+  <meta property="og:site_name" content="Copenhagen Cosmetology">
+  <meta property="og:title" content="Ansigtsbehandling i Herlev &amp; København | Copenhagen Cosmetology">
+  <meta property="og:description" content="Lægeeksamineret kosmetolog i Herlev ved København. Skræddersyede ansigtsbehandlinger, microneedling, lash lift, brow lift, negle, voks og kropsbehandlinger. Book tid online.">
+  <meta property="og:url" content="https://cph-cos.dk/">
+  <meta property="og:image" content="https://cph-cos.dk/assets/img/og-image.jpg">
+  <meta name="theme-color" content="#f7f1ec">
+  <!-- /SEO -->
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Business details for Google. No street address on purpose: the clinic is in a private home. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "@id": "https://cph-cos.dk/#business",
+    "name": "Copenhagen Cosmetology",
+    "url": "https://cph-cos.dk/",
+    "logo": "https://cph-cos.dk/assets/img/icon-180.png",
+    "image": "https://cph-cos.dk/assets/img/og-image.jpg",
+    "description": "Lægeeksamineret kosmetolog i Herlev ved København. Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks og kropsbehandlinger.",
+    "telephone": "+4528689384",
+    "email": "copenhagencos@gmail.com",
+    "priceRange": "95–2030 kr.",
+    "currenciesAccepted": "DKK",
+    "paymentAccepted": "MobilePay, kontant",
+    "address": { "@type": "PostalAddress", "addressLocality": "Herlev", "addressCountry": "DK" },
+    "areaServed": [
+      { "@type": "City", "name": "Herlev" },
+      { "@type": "City", "name": "København" },
+      { "@type": "City", "name": "Ballerup" },
+      { "@type": "City", "name": "Gladsaxe" }
+    ],
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"],
+      "opens": "09:30",
+      "closes": "18:00"
+    }],
+    "founder": { "@type": "Person", "name": "Phattree Nancy Jensen", "jobTitle": "Kosmetolog og hudterapeut" },
+    "sameAs": ["https://www.instagram.com/nancyjensen231"]
+  }
+  </script>
 </head>
 <body data-page="home">
 
@@ -17,8 +64,8 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <span class="eyebrow">Kosmetolog & hudterapeut · Herlev</span>
-        <h1>Naturlig skønhed.<br><em>Synlige resultater.</em></h1>
+        <h1 class="eyebrow">Kosmetolog & ansigtsbehandling i Herlev</h1>
+        <p class="hero-title">Naturlig skønhed.<br><em>Synlige resultater.</em></p>
         <p class="lead">Eksklusive ansigtsbehandlinger skræddersyet til din hud – udført med omhu, viden og præcision af lægeeksamineret kosmetolog Phattree Nancy Jensen.</p>
         <div class="hero-actions">
           <a class="btn" href="booking.html">Book tid online</a>
@@ -120,7 +167,7 @@
   (function () {
     var html = CPH.categories.map(function (c) {
       return '<a class="card reveal in" href="behandlinger.html#' + c.id + '">' +
-        '<img src="' + c.img + '" alt="" loading="lazy">' +
+        '<img src="' + c.img + '" alt="' + c.name + ' i Herlev" loading="lazy">' +
         '<div class="card-body"><h3>' + c.name + '</h3><p>' + c.intro + '</p>' +
         '<span class="card-link">' + (c.comingSoon ? 'Kommer snart' : 'Se priser →') + '</span></div></a>';
     }).join("");

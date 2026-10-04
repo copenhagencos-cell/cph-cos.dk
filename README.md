@@ -28,5 +28,12 @@ The booking page then shows EasyPractice's calendar, and bookings land directly 
 **Note (2026-10-04):** the old link `system.easypractice.net/book/copenhagen-cosmetology` says the page "does not exist anymore",
 so online booking on the current site is broken. The new link needs to be found in EasyPractice.
 
+## SEO
+- Every page has a title, description, canonical link and share preview in the `<!-- SEO -->` block in its `<head>`.
+- `index.html` has the business data for Google (schema.org). **No street address, on purpose.**
+- The old Hostinger addresses (e.g. `ansigtsbehandling-kobenhavn.html`, `priser.html`) are small forwarding pages to the new pages.
+- `sitemap.xml`, `robots.txt` and `404.html` assume the site runs on https://cph-cos.dk/ (the 404 page doesn't style correctly on the github.io test address).
+- **At launch:** remove the `<meta name="robots" content="noindex">` line from all pages. See `seo-audit.md` in the Claude folder.
+
 ## Viewing the site locally
 Open `index.html` in a browser, or start a small web server in the folder.

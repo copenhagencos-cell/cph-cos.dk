@@ -18,7 +18,7 @@
   header.className = "site-header";
   header.innerHTML =
     '<div class="wrap">' +
-      '<a class="brand" href="index.html"><img src="assets/img/logo.png" alt="">' +
+      '<a class="brand" href="index.html"><img src="assets/img/logo-96.png" alt="" width="48" height="48">' +
         "<span>Copenhagen<small>Cosmetology</small></span></a>" +
       '<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
       '<nav class="nav" aria-label="Hovedmenu">' + nav +
