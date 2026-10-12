@@ -39,6 +39,7 @@ function Header([string]$page) {
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html"><img src="assets/img/logo-96.png" alt="" width="48" height="48"><span>Copenhagen<small>Cosmetology</small></span></a>
+    <a class="btn header-book" href="booking.html">Book tid</a>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav" aria-label="Hovedmenu">$nav<a class="btn" href="booking.html">Book tid</a></nav>
   </div>
@@ -58,8 +59,8 @@ function Footer([string]$page) {
         <li><a href="tel:$($B.phoneLink)">Tlf. $(Esc $B.phone)</a></li>
         <li><a href="mailto:$($B.email)">$(Esc $B.email)</a></li>
         <li><a href="$($B.instagram)" target="_blank" rel="noopener">Instagram</a></li></ul></div>
-      <div><h4>Åbningstider</h4><ul>
-        <li>Tirsdag – torsdag: 9.30 – 18.00</li><li>Fredag – mandag: lukket</li></ul></div>
+      <div><h4>Tider</h4><ul>
+        <li>Efter aftale – ingen faste åbningstider</li><li><a href="booking.html">Book online døgnet rundt</a></li></ul></div>
       <div><h4>Information</h4><ul>
         <li><a href="booking.html">Book tid</a></li>
         <li><a href="behandlinger.html">Behandlinger & priser</a></li>
@@ -94,22 +95,44 @@ function PriceList($list, [bool]$comingSoon) {
   }
 }
 
+function SkinProblems {
+  if (-not $J.skinProblems) { return '' }
+  $cards = ($J.skinProblems | ForEach-Object { $p = $_
+    $links = ($p.services | ForEach-Object { $id = $_
+      $s = $J.services | Where-Object { $_.id -eq $id } | Select-Object -First 1
+      if ($s) { "<a href=""booking.html?service=$($s.id)"">$(Esc $s.name)</a>" }
+    }) -join ' · '
+    "<article class=""problem""><h3>$(Esc $p.title)</h3><p>$(Esc $p.text)</p><p class=""problem-links""><strong>Anbefalet:</strong> $links</p></article>"
+  }) -join "`n"
+@"
+<div class="problems" id="hudproblemer">
+<h3 class="subhead">Ansigtsbehandling mod dit hudproblem</h3>
+<p class="muted">Alle behandlinger tilpasses din hud. Her er, hvad vi typisk anbefaler. Ved første behandling laver vi en hudanalyse og lægger en plan sammen.</p>
+<div class="problem-grid">
+$cards
+</div>
+</div>
+"@
+}
+
 function PriceSections {
   ($J.categories | ForEach-Object { $c = $_
     $list = @($J.services | Where-Object { $_.cat -eq $c.id })
     $extra = ''
     if ($c.id -eq 'krop') { $extra = '<p class="note">Kontakt mig for priser på kropsbehandlinger – de oplyses ved booking.</p>' }
     if ($c.id -eq 'pmu') { $extra = '<p class="note">Permanent makeup er under professionel forberedelse og kan bookes snart. Priserne er vejledende. <a href="permanent-makeup.html">Læs om teknikker, heling og FAQ</a>.</p>' }
+    $after = if ($c.id -eq 'ansigt') { SkinProblems } else { '' }
     $soon = [bool]$c.comingSoon
 @"
 <div class="price-cat" id="$($c.id)"><div class="price-cat-head"><img src="$($c.img)" alt="$(Esc $c.name) hos Copenhagen Cosmetology i Herlev" loading="lazy"><div><h2>$(Esc $c.name)</h2><p class="lead">$(Esc $c.intro)</p></div></div>
-$extra$(PriceList $list $soon)</div>
+$extra$(PriceList $list $soon)
+$after</div>
 "@
   }) -join "`n"
 }
 
 function CatNav {
-  (($J.categories | ForEach-Object { "<a class=""chip"" href=""#$($_.id)"">$(Esc $_.name)</a>" }) -join '') + '<a class="chip" href="#klippekort">Klippekort</a><a class="chip" href="#faq">Spørgsmål & svar</a>'
+  (($J.categories | ForEach-Object { "<a class=""chip"" href=""#$($_.id)"">$(Esc $_.name)</a>" }) -join '') + '<a class="chip" href="#hudproblemer">Hudproblemer</a><a class="chip" href="#klippekort">Klippekort</a><a class="chip" href="#faq">Spørgsmål & svar</a>'
 }
 
 function Packages {
@@ -216,7 +239,7 @@ $llms = @"
 > Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut $($B.owner). Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og (snart) permanent makeup bryn.
 
 - Område: $($B.area). $($B.addressNote)
-- Åbningstider: tirsdag–torsdag 9.30–18.00
+- Åbningstider: ingen faste åbningstider, tider efter aftale
 - Telefon: $($B.phone) · E-mail: $($B.email)
 - Booking: ${site}booking.html
 - Betaling: MobilePay eller kontant

@@ -21,16 +21,17 @@ A simple website made of plain HTML/CSS/JavaScript, with no build step. It's mea
 The build writes the price list, menu, footer, FAQ and Google data **straight into the HTML pages**, so search engines and AI crawlers (ChatGPT, Perplexity…) can read them without JavaScript. It also writes `js/data.js` (for the booking calendar), `sitemap.xml`, `robots.txt` and `llms.txt`.
 Don't edit the content between `<!-- BUILD:… -->` markers in the pages, because the build replaces it. The menu and footer templates live in `tools/build.ps1`. Colours and fonts are at the top of `css/style.css`.
 
-## Booking: demo now, EasyPractice when the site goes live
-The calendar currently runs in **demo mode** (`booking.mode: "demo"` in `js/data.js`): it shows example free times and sends nothing.
+## Booking: EasyPractice (Terapeut Booking)
+Booking uses **EasyPractice** (decided 2026-10-12): `"mode": "easypractice"` and `"easyPracticeUrl": "https://system.easypractice.net/book/copenhagen-cosmetology"` in `data/site.json`. The booking page embeds Nancy's Terapeut Booking page, so bookings land directly in her EasyPractice calendar. Other modes: `"demo"` (example times, sends nothing) and `"calcom"` (below).
 
-To avoid double bookings, the live booking should go through EasyPractice / Terapeut Booking, where Nancy's real calendar is:
-1. In EasyPractice: go to *Online Booking*, switch it on and copy the booking link.
-2. In `js/data.js`, set `mode: "easypractice"` and `easyPracticeUrl: "<the link>"`.
-The booking page then shows EasyPractice's calendar, and bookings land directly in Nancy's calendar with automatic confirmation emails.
+### Cal.com (set up 2026-10-12, not in use)
+To switch to Cal.com instead:
+1. In `data/site.json`, set `"mode": "calcom"` and `"calLink"` to the public booking link, e.g. `"copenhagen-cosmetology"` for https://cal.com/copenhagen-cosmetology. Then run the build.
+2. Optional: to open a specific treatment from a "Book" button, add `"calEvent": "<event slug>"` to that service in `site.json` (the slug is the last part of the event's Cal.com link).
+The booking page then shows Cal.com's calendar (official inline embed), and bookings land directly in Nancy's calendar with automatic confirmation emails.
 
-**Note (2026-10-04):** the old link `system.easypractice.net/book/copenhagen-cosmetology` says the page "does not exist anymore",
-so online booking on the current site is broken. The new link needs to be found in EasyPractice.
+**Never put a Cal.com API key (`cal_live_…`) in this repository.** The site is public, so anyone could read the key and control the calendar. The embed only needs the public link.
+
 
 ## SEO
 - Every page has a title, description, canonical link and share preview in the `<!-- SEO -->` block in its `<head>`.

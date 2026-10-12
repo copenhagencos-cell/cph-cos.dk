@@ -1,15 +1,92 @@
-/* Online booking: choose treatment -> day & time -> details -> confirmation. */
+/* Online booking.
+   EasyPractice mode ("mode": "easypractice" in site.json, current): Nancy's Terapeut Booking page is
+   embedded, so bookings land directly in her EasyPractice calendar.
+   Cal.com mode ("mode": "calcom"): step 1 (treatment) stays on this page, then Cal.com takes over.
+   Demo mode runs all four steps here with example times. */
 (function () {
   var cfg = CPH.booking;
   var root = document.getElementById("booking-root");
 
-  // Live mode: embed EasyPractice so bookings go straight into Nancy's real calendar.
   if (cfg.mode === "easypractice" && cfg.easyPracticeUrl) {
-    root.innerHTML = '<iframe class="ep-frame" src="' + cfg.easyPracticeUrl + '" title="Online booking"></iframe>';
+    // EasyPractice's own script resizes the embedded booking to fit its content.
+    var s = document.createElement("script");
+    s.src = "https://system.easypractice.net/js/templates/onlinebook_iframe.js";
+    document.head.appendChild(s);
+    root.innerHTML =
+      '<p class="muted center" style="margin-bottom:16px">Vælg behandling, dag og tid herunder. ' +
+      'Virker bookingen ikke i din browser, så <a href="' + cfg.easyPracticeUrl + '" target="_blank" rel="noopener">åbn bookingen i et nyt vindue</a>.</p>' +
+      '<iframe class="ep-frame" src="' + cfg.easyPracticeUrl + '" title="Online booking hos Copenhagen Cosmetology" loading="eager"></iframe>';
     return;
   }
 
-  document.getElementById("demo-banner").hidden = false;
+  var live = cfg.mode === "calcom" && !!cfg.calLink;
+  if (!live) document.getElementById("demo-banner").hidden = false;
+
+  // ---------- Cal.com ----------
+  // Cal.com has one booking type per length ("behandling-15" … "behandling-120"). A treatment uses the
+  // shortest one it fits in, unless it has its own "calEvent" in site.json. The treatment name and price
+  // are filled into the "behandling" field, so Nancy sees what was booked.
+  var CAL_LENGTHS = [15, 30, 45, 60, 75, 90, 120];
+  var calUser = String(cfg.calLink || "").replace(/^https?:\/\/(app\.)?cal\.com\//, "").replace(/\/.*$/, "");
+  var calCount = 0;
+
+  function calEventFor(svc) {
+    if (svc.calEvent) return svc.calEvent;
+    var len = CAL_LENGTHS.filter(function (l) { return l >= svc.duration; })[0] || CAL_LENGTHS[CAL_LENGTHS.length - 1];
+    return "behandling-" + len;
+  }
+
+  function loadCalEmbed() {
+    if (window.Cal) return;
+    // Official Cal.com embed loader (https://cal.com/docs/embed).
+    (function (C, A, L) {
+      var p = function (a, ar) { a.q.push(ar); };
+      var d = C.document;
+      C.Cal = C.Cal || function () {
+        var cal = C.Cal, ar = arguments;
+        if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+        if (ar[0] === L) {
+          var api = function () { p(api, arguments); }, namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+          else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+  }
+
+  function showCal(svc) {
+    loadCalEmbed();
+    var el = document.getElementById("cal-inline");
+    el.innerHTML = "";
+    var ns = "cph" + (++calCount); // a fresh namespace per treatment, so switching treatment reloads the calendar
+    Cal("init", ns, { origin: "https://cal.com" });
+    Cal.ns[ns]("inline", {
+      elementOrSelector: "#cal-inline",
+      calLink: calUser + "/" + calEventFor(svc),
+      layout: "month_view",
+      config: { layout: "month_view", behandling: svc.name + " – " + CPH.formatPrice(svc.price) }
+    });
+    Cal.ns[ns]("ui", { theme: "light", hideEventTypeDetails: true, layout: "month_view",
+      cssVarsPerTheme: { light: { "cal-brand": "#2f3b44" } } });
+  }
+
+  if (live) {
+    // Step 2 shows the Cal.com calendar instead of the demo calendar; steps 3–4 happen inside Cal.com.
+    var p2 = document.querySelector('[data-panel="2"]');
+    p2.querySelector(".cal-cols").style.display = "none";
+    document.getElementById("to-3").style.display = "none";
+    p2.querySelector("[data-back]").textContent = "← Skift behandling";
+    var calBox = document.createElement("div");
+    calBox.id = "cal-inline";
+    calBox.style.cssText = "width:100%;min-height:560px;overflow:auto";
+    p2.querySelector(".cal-cols").after(calBox);
+    var stepItems = document.querySelectorAll("#steps li");
+    stepItems[1].textContent = "Dag, tid & dine oplysninger";
+    stepItems[2].style.display = stepItems[3].style.display = "none";
+  }
 
   var DOW = ["man", "tir", "ons", "tor", "fre", "lør", "søn"];
   var state = { service: null, date: null, time: null, step: 1, details: null };
@@ -78,7 +155,9 @@
       li.classList.toggle("done", n < step);
     });
     $("summary").hidden = step === 4;
-    if (step === 2) {
+    if (step === 2 && live) {
+      showCal(state.service);
+    } else if (step === 2) {
       if (!state.date) {
         // Open the calendar on the month of the first day with free times.
         for (var d = new Date(today); d <= lastDay; d.setDate(d.getDate() + 1)) {
@@ -99,8 +178,12 @@
     $("s-service").textContent = s ? s.name : "–";
     $("s-duration").textContent = s ? CPH.formatDuration(s.duration) : "–";
     $("s-price").textContent = s ? CPH.formatPrice(s.price) : "–";
-    $("s-date").textContent = state.date ? longDate(state.date) : "–";
-    $("s-time").textContent = state.time ? "kl. " + state.time + " – " + fromMin(toMin(state.time) + s.duration) : "–";
+    if (live) {
+      $("s-date").textContent = $("s-time").textContent = "Vælges i kalenderen";
+    } else {
+      $("s-date").textContent = state.date ? longDate(state.date) : "–";
+      $("s-time").textContent = state.time ? "kl. " + state.time + " – " + fromMin(toMin(state.time) + s.duration) : "–";
+    }
     $("to-2").disabled = !s;
     $("to-3").disabled = !(state.date && state.time);
   }
