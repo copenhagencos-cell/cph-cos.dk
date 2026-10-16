@@ -12,6 +12,7 @@ A simple website made of plain HTML/CSS/JavaScript, with no build step. It's mea
 | `om.html` | About Nancy, education, values |
 | `kontakt.html` | Contact, opening hours, MobilePay, gift cards |
 | `permanent-makeup.html` | Permanent makeup brows: techniques, comparison guide, prices, certificates, aftercare, FAQ |
+| `faq.html` | All FAQ questions grouped by topic (from `faq` and `faqPmu` in `site.json`); the only page with FAQPage markup |
 | `privatlivspolitik.html` / `handelsbetingelser.html` | Privacy policy, terms & cancellations |
 
 ## Changing prices, treatments, FAQ or the menu
@@ -42,3 +43,6 @@ The booking page then shows Cal.com's calendar (official inline embed), and book
 
 ## Viewing the site locally
 Open `index.html` in a browser, or start a small web server in the folder.
+
+## IndexNow (Bing, Yandex, Seznam, Naver)
+`4bbe5bcea5e44c06a8a787200e790931.txt` in the root is the IndexNow key. Don't delete it. After publishing changes, send the changed URLs to https://api.indexnow.org/indexnow with `host=cph-cos.dk`, that key and `keyLocation=https://cph-cos.dk/4bbe5bcea5e44c06a8a787200e790931.txt`.
