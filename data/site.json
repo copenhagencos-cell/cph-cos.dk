@@ -111,15 +111,15 @@
     { "id": "voks-helben-tanga", "cat": "voks", "group": "Ben", "name": "Hele ben inkl. tanga", "duration": 55, "price": 690 },
     { "id": "voks-helben-brasil", "cat": "voks", "group": "Ben", "name": "Hele ben inkl. brasiliansk/Hollywood", "duration": 60, "price": 795 },
 
-    { "id": "pmu-strokes", "cat": "pmu", "name": "Microblading / hair strokes", "duration": 150, "price": 2000, "bookable": false,
+    { "id": "pmu-strokes", "cat": "pmu", "name": "Microblading / hair strokes", "duration": 150, "price": 2000,
       "desc": "Fine, naturlige hårstrøg tegnet manuelt. Holdbarhed ca. 1–2 år." },
-    { "id": "pmu-combo", "cat": "pmu", "name": "Combo brows", "duration": 180, "price": 2000, "bookable": false,
+    { "id": "pmu-combo", "cat": "pmu", "name": "Combo brows", "duration": 180, "price": 2000,
       "desc": "Hårstrøg i fronten og blød shading i resten af brynet." },
-    { "id": "pmu-blade-shade", "cat": "pmu", "name": "Blade + Shade", "duration": 150, "price": 2000, "bookable": false,
+    { "id": "pmu-blade-shade", "cat": "pmu", "name": "Blade + Shade", "duration": 150, "price": 2000,
       "desc": "Microblading kombineret med shading for ekstra dybde og definition." },
-    { "id": "pmu-ombre", "cat": "pmu", "name": "Powder / ombré brows", "duration": 120, "price": 2000, "bookable": false,
+    { "id": "pmu-ombre", "cat": "pmu", "name": "Powder / ombré brows", "duration": 120, "price": 2000,
       "desc": "Maskinbaseret shading med blød farveovergang – lysere i fronten, mørkere i halen." },
-    { "id": "pmu-korrektion", "cat": "pmu", "name": "Korrektion inkl. nyt bryndesign", "duration": 120, "price": 3500, "bookable": false,
+    { "id": "pmu-korrektion", "cat": "pmu", "name": "Korrektion inkl. nyt bryndesign", "duration": 120, "price": 3500,
       "desc": "Korrektion af tidligere permanent makeup med opmåling, formgivning og nyt bryndesign." }
   ],
 
@@ -226,6 +226,6 @@
     { "q": "Kan jeg stadig bruge makeup?",
       "a": "Ja – men ikke på det behandlede område de første 7–10 dage, mens huden heler. Derefter kan du bruge makeup som normalt, men de fleste oplever, at de ikke længere behøver brynsminke." },
     { "q": "Hvordan booker jeg permanent makeup?",
-      "a": "Ring på tlf. 28 68 93 84 eller skriv til copenhagencos@gmail.com, så finder vi en tid. Behandlingen starter med opmåling, formgivning og farvevalg, og den endelige pris aftales ved konsultationen." }
+      "a": "Book online på booking-siden under PMU, eller ring på tlf. 28 68 93 84 eller skriv til copenhagencos@gmail.com. Behandlingen starter med opmåling, formgivning og farvevalg, og den endelige pris aftales ved konsultationen." }
   ]
 }

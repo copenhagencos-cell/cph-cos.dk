@@ -78,11 +78,8 @@ function Footer([string]$page) {
 
 # ---------- price list ----------
 function PriceItem($s, [bool]$comingSoon) {
-  # PMU is not in EasyPractice yet, so its Book button goes to the contact page (phone/e-mail).
-  $book = if ($comingSoon -or ($s.bookable -eq $false -and $s.cat -ne 'pmu')) {
+  $book = if ($comingSoon -or $s.bookable -eq $false) {
     '<span class="btn btn-small btn-outline" aria-disabled="true" style="opacity:.5;cursor:default">Snart</span>'
-  } elseif ($s.cat -eq 'pmu') {
-    '<a class="btn btn-small" href="kontakt.html">Book</a>'
   } else { "<a class=""btn btn-small"" href=""booking.html?service=$($s.id)"">Book</a>" }
   $desc = if ($s.desc) { "<p>$(Esc $s.desc)</p>" } else { '' }
   "<li class=""price-item""><div><h4>$(Esc $s.name)</h4>$desc</div><div class=""price-meta""><strong>$(Price $s.price)</strong><small>$(Duration $s.duration)</small></div>$book</li>"
@@ -124,7 +121,7 @@ function PriceSections {
     $list = @($J.services | Where-Object { $_.cat -eq $c.id })
     $extra = ''
     if ($c.id -eq 'krop') { $extra = '<p class="note">Kontakt mig for priser på kropsbehandlinger – de oplyses ved booking.</p>' }
-    if ($c.id -eq 'pmu') { $extra = '<p class="note">Permanent makeup bryn bookes på tlf. 28 68 93 84 eller e-mail. Priserne er vejledende, og den endelige pris aftales ved konsultationen. <a href="permanent-makeup.html">Læs om teknikker, heling og FAQ</a>.</p>' }
+    if ($c.id -eq 'pmu') { $extra = '<p class="note">Book permanent makeup bryn online eller på tlf. 28 68 93 84. Priserne er vejledende, og den endelige pris aftales ved konsultationen. <a href="permanent-makeup.html">Læs om teknikker, heling og FAQ</a>.</p>' }
     $after = if ($c.id -eq 'ansigt') { SkinProblems } else { '' }
     $soon = [bool]$c.comingSoon
 @"
