@@ -34,8 +34,8 @@
       "intro": "Massage, rygbehandling og luksuriøse spa-behandlinger, der giver ro, balance og ny energi." },
     { "id": "voks", "name": "Hårfjerning med voks", "img": "assets/img/voks.jpg",
       "intro": "Skånsom og effektiv voksbehandling. Resultatet holder typisk 3–4 uger. Hårene bør være min. 0,5 cm lange." },
-    { "id": "pmu", "name": "Permanent makeup – bryn", "img": "assets/img/pmu.jpg", "comingSoon": true, "page": "permanent-makeup.html",
-      "intro": "Microblading, powder/ombré brows og combo brows. Kommer snart – permanent makeup åbner, når alle sundhedsmæssige og faglige krav er fuldt implementeret." }
+    { "id": "pmu", "name": "Permanent makeup – bryn", "img": "assets/img/pmu.jpg", "page": "permanent-makeup.html",
+      "intro": "Microblading, powder/ombré brows og combo brows udført af certificeret kosmetisk tatovør – naturlige, velformede bryn, der holder i 1–2 år." }
   ],
 
   "services": [
@@ -225,7 +225,7 @@
       "a": "De første 24 timer dupper du forsigtigt området med en ren, fugtig vatrondel. I 7–10 dage påføres aftercare-creme i et tyndt lag 2–3 gange dagligt, og du undgår sauna, svømmehal, direkte sol og intens træning. Farven er mørkere lige efter behandlingen og bliver blødere og mere naturlig efter ca. 7–14 dage. Skorper må ikke pilles af." },
     { "q": "Kan jeg stadig bruge makeup?",
       "a": "Ja – men ikke på det behandlede område de første 7–10 dage, mens huden heler. Derefter kan du bruge makeup som normalt, men de fleste oplever, at de ikke længere behøver brynsminke." },
-    { "q": "Hvornår kan jeg booke permanent makeup?",
-      "a": "Permanent makeup åbner snart for booking. Kontakt os på tlf. 28 68 93 84 eller copenhagencos@gmail.com, hvis du vil have besked, når der åbnes for tider." }
+    { "q": "Hvordan booker jeg permanent makeup?",
+      "a": "Ring på tlf. 28 68 93 84 eller skriv til copenhagencos@gmail.com, så finder vi en tid. Behandlingen starter med opmåling, formgivning og farvevalg, og den endelige pris aftales ved konsultationen." }
   ]
 }

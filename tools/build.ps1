@@ -78,8 +78,11 @@ function Footer([string]$page) {
 
 # ---------- price list ----------
 function PriceItem($s, [bool]$comingSoon) {
-  $book = if ($comingSoon -or $s.bookable -eq $false) {
+  # PMU is not in EasyPractice yet, so its Book button goes to the contact page (phone/e-mail).
+  $book = if ($comingSoon -or ($s.bookable -eq $false -and $s.cat -ne 'pmu')) {
     '<span class="btn btn-small btn-outline" aria-disabled="true" style="opacity:.5;cursor:default">Snart</span>'
+  } elseif ($s.cat -eq 'pmu') {
+    '<a class="btn btn-small" href="kontakt.html">Book</a>'
   } else { "<a class=""btn btn-small"" href=""booking.html?service=$($s.id)"">Book</a>" }
   $desc = if ($s.desc) { "<p>$(Esc $s.desc)</p>" } else { '' }
   "<li class=""price-item""><div><h4>$(Esc $s.name)</h4>$desc</div><div class=""price-meta""><strong>$(Price $s.price)</strong><small>$(Duration $s.duration)</small></div>$book</li>"
@@ -121,7 +124,7 @@ function PriceSections {
     $list = @($J.services | Where-Object { $_.cat -eq $c.id })
     $extra = ''
     if ($c.id -eq 'krop') { $extra = '<p class="note">Kontakt mig for priser på kropsbehandlinger – de oplyses ved booking.</p>' }
-    if ($c.id -eq 'pmu') { $extra = '<p class="note">Permanent makeup er under professionel forberedelse og kan bookes snart. Priserne er vejledende. <a href="permanent-makeup.html">Læs om teknikker, heling og FAQ</a>.</p>' }
+    if ($c.id -eq 'pmu') { $extra = '<p class="note">Permanent makeup bryn bookes på tlf. 28 68 93 84 eller e-mail. Priserne er vejledende, og den endelige pris aftales ved konsultationen. <a href="permanent-makeup.html">Læs om teknikker, heling og FAQ</a>.</p>' }
     $after = if ($c.id -eq 'ansigt') { SkinProblems } else { '' }
     $soon = [bool]$c.comingSoon
 @"
@@ -202,7 +205,7 @@ $blocks = @{
   'cards' = (Cards); 'cat-nav' = (CatNav); 'prices' = (PriceSections); 'packages' = (Packages)
   'faq' = (FaqHtml $J.faq); 'faq-ld' = ''; 'faq-all' = (FaqGrouped); 'faq-all-ld' = (FaqLd $faqAll); 'offers-ld' = (OffersLd $J.categories)
   'faq-pmu' = (FaqHtml $J.faqPmu); 'faq-pmu-ld' = ''
-  'pmu-prices' = (PriceList @($J.services | Where-Object { $_.cat -eq 'pmu' }) $true)
+  'pmu-prices' = (PriceList @($J.services | Where-Object { $_.cat -eq 'pmu' }) $false)
 }
 foreach ($file in $pages.Keys) {
   $path = Join-Path $root $file
@@ -248,7 +251,7 @@ $priceLines = ($J.categories | ForEach-Object { $c = $_
 $llms = @"
 # $($B.name)
 
-> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut $($B.owner). Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og (snart) permanent makeup bryn.
+> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut $($B.owner). Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og permanent makeup bryn.
 
 - Område: $($B.area). $($B.addressNote)
 - Åbningstider: ingen faste åbningstider, tider efter aftale
