@@ -19,7 +19,7 @@ A simple website made of plain HTML/CSS/JavaScript, with no build step. It's mea
 1. Edit **`data/site.json`** (prices, treatments, FAQ, contact details, booking setup).
 2. Run the build: `powershell -ExecutionPolicy Bypass -File tools\build.ps1`
 
-The build writes the price list, menu, footer, FAQ and Google data **straight into the HTML pages**, so search engines and AI crawlers (ChatGPT, Perplexity…) can read them without JavaScript. It also writes `js/data.js` (for the booking calendar), `sitemap.xml`, `robots.txt` and `llms.txt`.
+The build writes the price list, menu, footer, FAQ and Google data **straight into the HTML pages**, so search engines and AI crawlers (ChatGPT, Perplexity…) can read them without JavaScript. It also writes `js/data.js` (for the booking calendar), `sitemap.xml`, `robots.txt`, `llms.txt` (short overview for AI assistants, llmstxt.org format) and `llms-full.txt` (the same plus every FAQ answer).
 Don't edit the content between `<!-- BUILD:… -->` markers in the pages, because the build replaces it. The menu and footer templates live in `tools/build.ps1`. Colours and fonts are at the top of `css/style.css`.
 
 ## Booking: EasyPractice (Terapeut Booking)

@@ -1,25 +1,35 @@
 # Copenhagen Cosmetology
 
-> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut Phattree Nancy Jensen. Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og permanent makeup bryn.
+> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut Phattree Nancy Jensen. Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og permanent makeup bryn. Book online eller på telefon.
 
 - Område: Herlev og Københavns omegn. Adressen oplyses ved bekræftet booking.
 - Åbningstider: ingen faste åbningstider, tider efter aftale
 - Telefon: 28 68 93 84 · E-mail: copenhagencos@gmail.com
-- Booking: https://cph-cos.dk/booking.html
-- Betaling: MobilePay eller kontant
+- Online booking: https://cph-cos.dk/booking.html
+- Betaling: MobilePay eller kontant. Klippekort og gavekort betales forud.
 - Afbud: senest 24 timer før (50 % ved afbud samme dag, 100 % ved udeblivelse)
-- Uddannelse: lægeeksamineret kosmetolog (Nordsjællands Kosmetologskole, 2021); hygiejnekursus for tatovører (2022); DKF fagkursus for kosmetiske tatovører med eksamen (2026); certificeret i permanent makeup bryn, 160 timer (Stella Simone PMU Academy, 2026)
+- CVR: 41512598
+
+## Uddannelse
+- Lægeeksamineret kosmetolog og hudterapeut, Nordsjællands Kosmetologskole (2021)
+- Lovpligtigt hygiejnekursus for tatovører, Tatoveringsklinikken, Bispebjerg Hospital (2022)
+- Medlearn-kurser i atopisk eksem og immunmedierede inflammatoriske hudsygdomme (2023)
+- Fagkursus for kosmetiske tatovører med eksamen, Dansk Kosmetolog Forening (2026)
+- Certificeret kosmetisk tatovør, bryn pigmentering, 160 timer, og Swiss Color Artist, Stella Simone PMU Academy (2026)
+- Perfect Color Fade™ Master, masterclass i healed PMU, Stella Simone PMU Academy (2026)
 
 ## Sider
-- [Behandlinger og priser](https://cph-cos.dk/behandlinger.html)
-- [Permanent makeup bryn](https://cph-cos.dk/permanent-makeup.html)
-- [Om kosmetologen](https://cph-cos.dk/om.html)
+- [Behandlinger og priser](https://cph-cos.dk/behandlinger.html): alle behandlinger med pris og varighed, hudproblemer og klippekort
+- [Permanent makeup bryn](https://cph-cos.dk/permanent-makeup.html): microblading, powder/ombré, combo brows, heling og pleje
+- [Book tid online](https://cph-cos.dk/booking.html): vælg behandling, dag og tidspunkt
+- [Spørgsmål og svar](https://cph-cos.dk/faq.html): booking, priser, afbud og behandlinger
+- [Om kosmetologen](https://cph-cos.dk/om.html): uddannelse, certifikater og erfaring
 - [Kontakt og gavekort](https://cph-cos.dk/kontakt.html)
-- [Spørgsmål og svar](https://cph-cos.dk/faq.html)
+- [Alt indhold i ren tekst](https://cph-cos.dk/llms-full.txt): priser og alle spørgsmål og svar
 
-# Priser
+## Priser
 
-## Ansigtsbehandlinger
+### Ansigtsbehandlinger
 - ProSkin 30: 395 kr., 30 min
 - ProSkin 60: 725 kr., 50 min
 - ProSkin 90: 895 kr., 1 t 15 min
@@ -28,7 +38,7 @@
 - Microneedling med ansigtsbehandling: 1.725 kr., 1 t 10 min
 - Advanced ProFace Microneedling + LED: 1.995 kr., 1 t 25 min
 
-## Vipper & Bryn
+### Vipper & Bryn
 - Farvning af vipper eller bryn: 195 kr., 30 min
 - Farvning af bryn inkl. retning: 250 kr., 25 min
 - Farvning af vipper og bryn inkl. retning: 395 kr., 35 min
@@ -40,7 +50,7 @@
 - Fjernelse af vippe-extensions: 200 kr., 15 min
 - Brow extension: 350 kr., 40 min
 
-## Negle
+### Negle
 - Manicure: 295 kr., 20 min
 - Pedicure: 295 kr., 20 min
 - Luksus manicure med peeling og maske (Karmameju): 395 kr., 30 min
@@ -54,14 +64,14 @@
 - Shellac opfyldning inkl. aftagning: 545 kr., 1 t
 - Aftagning af shellac: 150 kr., 15 min
 
-## Kropsbehandlinger
+### Kropsbehandlinger
 - Rygmassage: Pris på forespørgsel, 20 min
 - Rygbehandling: Pris på forespørgsel, 30 min
 - Aromavelvære / europæisk kropsmassage: Pris på forespørgsel, 1 t
 - Luksus Spa Pro Body Firm træmassage: Pris på forespørgsel, 1 t 25 min
 - Luksus ProFace & Spa Pro Body Firm: Pris på forespørgsel, 1 t 50 min
 
-## Hårfjerning med voks
+### Hårfjerning med voks
 - Overlæbe: 95 kr., 15 min
 - Hage: 135 kr., 15 min
 - Næse: 120 kr., 15 min
@@ -84,9 +94,23 @@
 - Hele ben inkl. tanga: 690 kr., 55 min
 - Hele ben inkl. brasiliansk/Hollywood: 795 kr., 1 t
 
-## Permanent makeup – bryn
+### Permanent makeup – bryn
 - Microblading / hair strokes: 2.000 kr., 2 t 30 min
 - Combo brows: 2.000 kr., 3 t
 - Blade + Shade: 2.000 kr., 2 t 30 min
 - Powder / ombré brows: 2.000 kr., 2 t
 - Korrektion inkl. nyt bryndesign: 3.500 kr., 2 t
+
+### Klippekort
+- ProSkin 60 – betal for 3: 1.875 kr. (normalpris 2.175 kr., 625 kr. pr. behandling)
+- ProSkin 60 – betal for 5, få den 6. gratis: 3.125 kr. (normalpris 3.625 kr., 520 kr. pr. behandling)
+- Microneedling – betal for 3: 4.500 kr. (normalpris 5.175 kr., 1.500 kr. pr. behandling)
+- Microneedling – betal for 5, få den 6. gratis: 7.500 kr. (normalpris 8.625 kr., 1.200 kr. pr. behandling)
+- Advanced målrettet ansigtsbehandling – betal for 3: 5.325 kr. (normalpris 6.060 kr., 1.775 kr. pr. behandling)
+- Advanced målrettet ansigtsbehandling – betal for 5, få den 6. gratis: 8.875 kr. (normalpris 10.100 kr., 1.480 kr. pr. behandling)
+- Luksus ProFace (Pro Firm) – betal for 3: 2.985 kr. (normalpris 3.585 kr., 995 kr. pr. behandling)
+- Luksus ProFace (Pro Firm) – betal for 5, få den 6. gratis: 5.475 kr. (normalpris 5.975 kr., 913 kr. pr. behandling)
+
+## Optional
+- [Handelsbetingelser og afbudspolitik](https://cph-cos.dk/handelsbetingelser.html)
+- [Privatlivspolitik](https://cph-cos.dk/privatlivspolitik.html)

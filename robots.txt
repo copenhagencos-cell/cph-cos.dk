@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://cph-cos.dk/sitemap.xml
+
+# Overview for AI assistants: https://cph-cos.dk/llms.txt (full text: https://cph-cos.dk/llms-full.txt)
