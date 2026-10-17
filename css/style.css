@@ -427,3 +427,7 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--sand); outl
 .cert-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 56px; }
 .cert-row .cert img { height: auto; }
 @media (max-width: 860px) { .cert-row { grid-template-columns: 1fr; margin-top: 32px; } }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 32px; margin-top: 40px; align-items: start; }
+.cert-grid .cert img { height: auto; }
+.cert-grid figcaption { text-align: left; line-height: 1.5; }
+.cert-grid figcaption strong { color: var(--ink); }
