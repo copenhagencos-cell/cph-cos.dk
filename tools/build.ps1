@@ -24,7 +24,7 @@ function Duration([int]$m) { if ($m -lt 60) { "$m min" } else { $h = [Math]::Flo
 
 # ---------- shared blocks ----------
 $navLinks = @(
-  @('index.html', 'Forside', 'home'),
+  @('/', 'Forside', 'home'),
   @('behandlinger.html', 'Behandlinger & priser', 'behandlinger'),
   @('permanent-makeup.html', 'Permanent makeup', 'pmu'),
   @('om.html', 'Om mig', 'om'),
@@ -38,7 +38,7 @@ function Header([string]$page) {
 @"
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="index.html"><img src="assets/img/logo-96.png" alt="" width="48" height="48"><span>Copenhagen<small>Cosmetology</small></span></a>
+    <a class="brand" href="/"><img src="assets/img/logo-96.png" alt="" width="48" height="48"><span>Copenhagen<small>Cosmetology</small></span></a>
     <a class="btn header-book" href="booking.html">Book tid</a>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav" aria-label="Hovedmenu">$nav<a class="btn" href="booking.html">Book tid</a></nav>
