@@ -26,6 +26,7 @@ function Duration([int]$m) { if ($m -lt 60) { "$m min" } else { $h = [Math]::Flo
 $navLinks = @(
   @('/', 'Forside', 'home'),
   @('behandlinger.html', 'Behandlinger & priser', 'behandlinger'),
+  @('tilbud.html', 'Tilbud -20 %', 'tilbud'),
   @('permanent-makeup.html', 'Permanent makeup', 'pmu'),
   @('om.html', 'Om mig', 'om'),
   @('kontakt.html', 'Kontakt', 'kontakt')
@@ -64,6 +65,9 @@ function Footer([string]$page) {
       <div><h4>Information</h4><ul>
         <li><a href="booking.html">Book tid</a></li>
         <li><a href="behandlinger.html">Behandlinger & priser</a></li>
+        <li><a href="tilbud.html">Tilbud: 20 % på første besøg</a></li>
+        <li><a href="ansigtsbehandling-kobenhavn.html">Ansigtsbehandling & microneedling</a></li>
+        <li><a href="vipper-og-bryn.html">Lash lift & brow lamination</a></li>
         <li><a href="permanent-makeup.html">Permanent makeup bryn</a></li>
         <li><a href="permanent-makeup-laeber.html">Permanent makeup læber</a></li>
         <li><a href="faq.html">Spørgsmål & svar</a></li>
@@ -167,7 +171,7 @@ function FaqLd($items) {
 # carries the FAQPage data and behandlinger.html / permanent-makeup.html show their FAQ without it.
 $faqAll = @($J.faq) + @($J.faqPmu | ForEach-Object { $_ | Add-Member -NotePropertyName group -NotePropertyValue 'Permanent makeup bryn' -Force -PassThru })
 function FaqGrouped {
-  $order = @('Booking og praktisk', 'Ansigtsbehandlinger', 'Vipper og bryn', 'Voks', 'Permanent makeup bryn')
+  $order = @('Booking og praktisk', 'Ansigtsbehandlinger', 'Vipper og bryn', 'Negle', 'Voks', 'Permanent makeup bryn')
   $groups = @($order | Where-Object { $faqAll.group -contains $_ })
   $chips = '<nav class="cat-nav" aria-label="Emner">' + (($groups | ForEach-Object { $i = [array]::IndexOf($groups, $_); "<a class=""chip"" href=""#emne-$i"">$(Esc $_)</a>" }) -join '') + '</nav>'
   $chips + "`n" + (($groups | ForEach-Object { $g = $_; $i = [array]::IndexOf($groups, $g)
@@ -196,14 +200,45 @@ function Set-Block([string]$html, [string]$name, [string]$content) {
 $pages = [ordered]@{
   'index.html' = 'home'; 'behandlinger.html' = 'behandlinger'; 'booking.html' = 'booking'; 'om.html' = 'om'
   'kontakt.html' = 'kontakt'; 'permanent-makeup.html' = 'pmu'; 'permanent-makeup-laeber.html' = 'pmu'; 'privatlivspolitik.html' = 'privatliv'
-  'handelsbetingelser.html' = 'vilkaar'; 'faq.html' = 'faq'; '404.html' = '404'
+  'handelsbetingelser.html' = 'vilkaar'; 'faq.html' = 'faq'; 'tilbud.html' = 'tilbud'
+  'ansigtsbehandling-kobenhavn.html' = 'behandlinger'; 'vipper-og-bryn.html' = 'behandlinger'; '404.html' = '404'
 }
 $pmuCats = @($J.categories | Where-Object { $_.id -eq 'pmu' })
+
+# ---------- tilbud.html: every priced service with the first-visit price ----------
+$pct = [int]$J.offer.firstVisitPercent
+function OfferPrice($p) { [Math]::Round($p * (100 - $pct) / 100) }
+function OfferTable {
+  ($J.categories | ForEach-Object { $c = $_
+    $rows = ($J.services | Where-Object { $_.cat -eq $c.id -and $null -ne $_.price -and $_.bookable -ne $false } | ForEach-Object {
+      "<tr><td>$(Esc $_.name)</td><td class=""num""><s>$(Price $_.price)</s></td><td class=""num""><strong>$(Price (OfferPrice $_.price))</strong></td><td class=""num""><a class=""btn btn-small"" href=""booking.html?service=$($_.id)"">Book</a></td></tr>"
+    }) -join "`n"
+    if ($rows) {
+      $more = if ($c.page) { $c.page } else { "behandlinger.html#$($c.id)" }
+@"
+<h2 id="tilbud-$($c.id)">$(Esc $c.name) – tilbud</h2>
+<div class="table-scroll"><table class="package-table offer-table">
+<thead><tr><th>Behandling</th><th class="num">Normalpris</th><th class="num">Første besøg (-$pct %)</th><th class="num"></th></tr></thead>
+<tbody>
+$rows
+</tbody></table></div>
+<p class="muted"><a href="$more">Læs mere om $(Esc $c.name.ToLower())</a></p>
+"@
+    }
+  }) -join "`n"
+}
+# Category pages (ansigtsbehandling-kobenhavn.html, vipper-og-bryn.html): prices and FAQ for one topic.
+function CatPrices([string]$id) { PriceList @($J.services | Where-Object { $_.cat -eq $id }) $false }
+function FaqGroup([string]$g) { FaqHtml @($faqAll | Where-Object { $_.group -eq $g }) }
 $blocks = @{
   'cards' = (Cards); 'cat-nav' = (CatNav); 'prices' = (PriceSections); 'packages' = (Packages)
   'faq' = (FaqHtml $J.faq); 'faq-ld' = ''; 'faq-all' = (FaqGrouped); 'faq-all-ld' = (FaqLd $faqAll); 'offers-ld' = (OffersLd $J.categories)
   'faq-pmu' = (FaqHtml $J.faqPmu); 'faq-pmu-ld' = ''
   'pmu-prices' = (PriceList @($J.services | Where-Object { $_.cat -eq 'pmu' }) $false)
+  'offer-table' = (OfferTable); 'offer-pct' = "$pct"
+  'prices-ansigt' = (CatPrices 'ansigt'); 'prices-vipper-bryn' = (CatPrices 'vipper-bryn'); 'skin-problems' = (SkinProblems)
+  'faq-ansigt' = (FaqGroup 'Ansigtsbehandlinger'); 'faq-vipper-bryn' = (FaqGroup 'Vipper og bryn')
+  'offers-ld-ansigt' = (OffersLd @($J.categories | Where-Object { $_.id -eq 'ansigt' })); 'offers-ld-vipper-bryn' = (OffersLd @($J.categories | Where-Object { $_.id -eq 'vipper-bryn' }))
 }
 foreach ($file in $pages.Keys) {
   $path = Join-Path $root $file
@@ -238,7 +273,7 @@ $dataJs = "/* GENERATED by tools/build.ps1 from data/site.json – edit site.jso
 # ---------- sitemap, robots, llms.txt, llms-full.txt ----------
 $today = Get-Date -Format 'yyyy-MM-dd'
 $urls = @(@('', '1.0'), @('behandlinger.html', '0.9'), @('booking.html', '0.9'), @('permanent-makeup.html', '0.8'), @('permanent-makeup-laeber.html', '0.8'),
-  @('faq.html', '0.7'), @('om.html', '0.7'), @('kontakt.html', '0.7'), @('privatlivspolitik.html', '0.2'), @('handelsbetingelser.html', '0.2'))
+  @('tilbud.html', '0.9'), @('ansigtsbehandling-kobenhavn.html', '0.9'), @('vipper-og-bryn.html', '0.9'), @('faq.html', '0.7'), @('om.html', '0.7'), @('kontakt.html', '0.7'), @('privatlivspolitik.html', '0.2'), @('handelsbetingelser.html', '0.2'))
 $entries = ($urls | ForEach-Object { "  <url><loc>$site$($_[0])</loc><lastmod>$today</lastmod><priority>$($_[1])</priority></url>" }) -join "`n"
 [IO.File]::WriteAllText((Join-Path $root 'sitemap.xml'), "<?xml version=""1.0"" encoding=""UTF-8""?>`n<urlset xmlns=""http://www.sitemaps.org/schemas/sitemap/0.9"">`n$entries`n</urlset>`n", $utf8)
 [IO.File]::WriteAllText((Join-Path $root 'robots.txt'), "User-agent: *`nAllow: /`n`nSitemap: ${site}sitemap.xml`n`n# Overview for AI assistants: ${site}llms.txt (full text: ${site}llms-full.txt)`n", $utf8)
@@ -251,7 +286,7 @@ $packageLines = ($J.packages | ForEach-Object { "- $($_.name): $(Price $_.price)
 $intro = @"
 # $($B.name)
 
-> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut $($B.owner). Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og permanent makeup til bryn og læber. Book online eller på telefon.
+> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut $($B.owner). Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og permanent makeup til bryn og læber. Book online eller på telefon. Nye kunder får $($J.offer.firstVisitPercent) % rabat på første besøg.
 
 - Område: $($B.area). $($B.addressNote)
 - Åbningstider: ingen faste åbningstider, tider efter aftale
@@ -279,6 +314,9 @@ $intro
 
 ## Sider
 - [Behandlinger og priser](${site}behandlinger.html): alle behandlinger med pris og varighed, hudproblemer og klippekort
+- [Tilbud: $($J.offer.firstVisitPercent) % på første besøg](${site}tilbud.html): normalpris og tilbudspris for alle behandlinger
+- [Ansigtsbehandling og microneedling i Herlev](${site}ansigtsbehandling-kobenhavn.html): priser, hudproblemer, microneedling
+- [Lash lift og brow lamination i Herlev](${site}vipper-og-bryn.html): priser, holdbarhed og efterpleje
 - [Permanent makeup bryn](${site}permanent-makeup.html): microblading, powder/ombré, combo brows, heling og pleje
 - [Permanent makeup læber](${site}permanent-makeup-laeber.html): full lip color, shaded lip liner, ombré lips, lip blush og aquarelle lips, 2.000 kr. pr. behandling, heling og pleje
 - [Book tid online](${site}booking.html): vælg behandling, dag og tidspunkt

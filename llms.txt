@@ -1,6 +1,6 @@
 # Copenhagen Cosmetology
 
-> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut Phattree Nancy Jensen. Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og permanent makeup til bryn og læber. Book online eller på telefon.
+> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut Phattree Nancy Jensen. Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og permanent makeup til bryn og læber. Book online eller på telefon. Nye kunder får 20 % rabat på første besøg.
 
 - Område: Herlev og Københavns omegn. Adressen oplyses ved bekræftet booking.
 - Åbningstider: ingen faste åbningstider, tider efter aftale
@@ -25,6 +25,9 @@
 
 ## Sider
 - [Behandlinger og priser](https://cph-cos.dk/behandlinger.html): alle behandlinger med pris og varighed, hudproblemer og klippekort
+- [Tilbud: 20 % på første besøg](https://cph-cos.dk/tilbud.html): normalpris og tilbudspris for alle behandlinger
+- [Ansigtsbehandling og microneedling i Herlev](https://cph-cos.dk/ansigtsbehandling-kobenhavn.html): priser, hudproblemer, microneedling
+- [Lash lift og brow lamination i Herlev](https://cph-cos.dk/vipper-og-bryn.html): priser, holdbarhed og efterpleje
 - [Permanent makeup bryn](https://cph-cos.dk/permanent-makeup.html): microblading, powder/ombré, combo brows, heling og pleje
 - [Permanent makeup læber](https://cph-cos.dk/permanent-makeup-laeber.html): full lip color, shaded lip liner, ombré lips, lip blush og aquarelle lips, 2.000 kr. pr. behandling, heling og pleje
 - [Book tid online](https://cph-cos.dk/booking.html): vælg behandling, dag og tidspunkt
