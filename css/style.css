@@ -395,6 +395,9 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--sand); outl
 .cert img { border-radius: var(--radius); box-shadow: var(--shadow); width: 100%; aspect-ratio: auto; object-fit: contain; background: var(--white); }
 .cert figcaption { font-size: .85rem; color: var(--text-soft); margin-top: 10px; text-align: center; }
 .split .cert img { aspect-ratio: auto; }
+/* Portrait shown whole (no crop), smaller beside the text */
+.split img.portrait { aspect-ratio: auto; object-fit: contain; width: auto; max-width: 100%; max-height: 480px; justify-self: center; }
+@media (max-width: 860px) { .split img.portrait { max-height: 400px; } }
 
 /* Legal text */
 .prose { max-width: 760px; margin: 0 auto; }
