@@ -434,3 +434,11 @@ input:focus, textarea:focus, select:focus { outline: 2px solid var(--sand); outl
 .cert-grid .cert img { height: auto; }
 .cert-grid figcaption { text-align: left; line-height: 1.5; }
 .cert-grid figcaption strong { color: var(--ink); }
+
+/* Booking page: direct link to Terapeut Booking (EasyPractice) */
+.ep-panel { max-width: 680px; margin: 0 auto; }
+.ep-chosen { background: var(--bg-deep); border-radius: var(--radius); padding: 14px 18px; margin: 0 auto 22px; }
+.ep-btn { font-size: 1.05rem; padding: 16px 44px; }
+.ep-steps { text-align: left; max-width: 520px; margin: 28px auto 20px; padding-left: 1.3em; }
+.ep-steps li { margin-bottom: 8px; color: var(--text-soft); }
+.ep-steps strong { color: var(--text); font-weight: 500; }

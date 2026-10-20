@@ -1,6 +1,7 @@
 /* Online booking.
-   EasyPractice mode ("mode": "easypractice" in site.json, current): Nancy's Terapeut Booking page is
-   embedded, so bookings land directly in her EasyPractice calendar.
+   EasyPractice mode ("mode": "easypractice" in site.json, current): the page links straight to Nancy's
+   Terapeut Booking page, so bookings land directly in her EasyPractice calendar. It is not embedded
+   (iframe), because Terapeut Booking warns that browsers' newer security rules can break embedded booking.
    Cal.com mode ("mode": "calcom"): step 1 (treatment) stays on this page, then Cal.com takes over.
    Demo mode runs all four steps here with example times. */
 (function () {
@@ -8,14 +9,28 @@
   var root = document.getElementById("booking-root");
 
   if (cfg.mode === "easypractice" && cfg.easyPracticeUrl) {
-    // EasyPractice's own script resizes the embedded booking to fit its content.
-    var s = document.createElement("script");
-    s.src = "https://system.easypractice.net/js/templates/onlinebook_iframe.js";
-    document.head.appendChild(s);
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+    var pre = new URLSearchParams(location.search).get("service");
+    var svc = pre && CPH.serviceById(pre);
+    var chosen = svc
+      ? '<p class="ep-chosen">Du har valgt: <strong>' + esc(svc.name) + '</strong> · ' + esc(CPH.formatPrice(svc.price)) +
+        ' · ' + esc(CPH.formatDuration(svc.duration)) + '<br><span class="muted">Vælg den samme behandling i bookingen.</span></p>'
+      : '';
+    var B = CPH.business;
     root.innerHTML =
-      '<p class="muted center" style="margin-bottom:16px">Vælg behandling, dag og tid herunder. ' +
-      'Virker bookingen ikke i din browser, så <a href="' + cfg.easyPracticeUrl + '" target="_blank" rel="noopener">åbn bookingen i et nyt vindue</a>.</p>' +
-      '<iframe class="ep-frame" src="' + cfg.easyPracticeUrl + '" title="Online booking hos Copenhagen Cosmetology" loading="eager"></iframe>';
+      '<div class="panel ep-panel center">' +
+        '<h2>Book din tid online</h2>' +
+        '<p class="lead" style="margin:0 auto 20px">Du booker direkte i min kalender hos Terapeut Booking. Du får en bekræftelse på e-mail.</p>' +
+        chosen +
+        '<a class="btn ep-btn" href="' + esc(cfg.easyPracticeUrl) + '" target="_blank" rel="noopener">Åbn booking</a>' +
+        '<ol class="ep-steps">' +
+          '<li><strong>Log ind</strong> med dit telefonnummer eller din e-mail – du får en kode tilsendt. Første gang oprettes du automatisk.</li>' +
+          '<li><strong>Vælg behandling</strong>, dag og tidspunkt.</li>' +
+          '<li><strong>Bekræft</strong> – så får du en bekræftelse på e-mail.</li>' +
+        '</ol>' +
+        '<p class="muted">Vil du hellere ringe eller skrive? Tlf. <a href="tel:' + esc(B.phoneLink) + '">' + esc(B.phone) + '</a> · ' +
+          '<a href="mailto:' + esc(B.email) + '">' + esc(B.email) + '</a></p>' +
+      '</div>';
     return;
   }
 
