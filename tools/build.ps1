@@ -125,7 +125,6 @@ function PriceSections {
   ($J.categories | ForEach-Object { $c = $_
     $list = @($J.services | Where-Object { $_.cat -eq $c.id })
     $extra = ''
-    if ($c.id -eq 'krop') { $extra = '<p class="note">Kontakt mig for priser på kropsbehandlinger – de oplyses ved booking.</p>' }
     if ($c.id -eq 'pmu') { $extra = '<p class="note">Book permanent makeup bryn online eller på tlf. 28 68 93 84. Priserne er vejledende, og den endelige pris aftales ved konsultationen. <a href="permanent-makeup.html">Læs om teknikker, heling og FAQ</a>.</p>' }
     $after = if ($c.id -eq 'ansigt') { SkinProblems } else { '' }
     $soon = [bool]$c.comingSoon
@@ -286,7 +285,7 @@ $packageLines = ($J.packages | ForEach-Object { "- $($_.name): $(Price $_.price)
 $intro = @"
 # $($B.name)
 
-> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut $($B.owner). Ansigtsbehandlinger, microneedling, vipper og bryn, negle, voks, kropsbehandlinger og permanent makeup til bryn og læber. Book online eller på telefon. Nye kunder får $($J.offer.firstVisitPercent) % rabat på første besøg.
+> Skønhedsklinik i Herlev ved København drevet af lægeeksamineret kosmetolog og hudterapeut $($B.owner). Ansigtsbehandlinger, microneedling, vipper og bryn, massage (kun for kvinder) og permanent makeup til bryn og læber. Book online eller på telefon. Nye kunder får $($J.offer.firstVisitPercent) % rabat på første besøg.
 
 - Område: $($B.area). $($B.addressNote)
 - Åbningstider: ingen faste åbningstider, tider efter aftale
@@ -317,7 +316,7 @@ $intro
 - [Tilbud: $($J.offer.firstVisitPercent) % på første besøg](${site}tilbud.html): normalpris og tilbudspris for alle behandlinger
 - [Ansigtsbehandling og microneedling i Herlev](${site}ansigtsbehandling-kobenhavn.html): priser, hudproblemer, microneedling
 - [Lash lift og brow lamination i Herlev](${site}vipper-og-bryn.html): priser, holdbarhed og efterpleje
-- [Permanent makeup bryn](${site}permanent-makeup.html): microblading, powder/ombré, combo brows, heling og pleje
+- [Permanent makeup bryn](${site}permanent-makeup.html): powder/ombré, combo brows, Blade + Shade, heling og pleje
 - [Permanent makeup læber](${site}permanent-makeup-laeber.html): full lip color, shaded lip liner, ombré lips, lip blush og aquarelle lips, 2.000 kr. pr. behandling, heling og pleje
 - [Book tid online](${site}booking.html): vælg behandling, dag og tidspunkt
 - [Spørgsmål og svar](${site}faq.html): booking, priser, afbud og behandlinger
