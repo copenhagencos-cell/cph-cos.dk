@@ -139,6 +139,19 @@ section { padding: 96px 0; }
   body.has-float { padding-bottom: 84px; }
 }
 
+/* WhatsApp chat button */
+.float-wa {
+  position: fixed; right: 24px; bottom: max(24px, env(safe-area-inset-bottom)); z-index: 41;
+  width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: #25d366; color: #fff; box-shadow: 0 8px 24px rgba(0,0,0,.25); transition: transform .2s;
+}
+.float-wa:hover { transform: scale(1.06); }
+.float-wa:focus-visible { outline: 3px solid var(--sand); outline-offset: 3px; }
+@media (max-width: 700px) {
+  .float-wa { right: 16px; bottom: max(16px, env(safe-area-inset-bottom)); }
+  body.has-float .float-wa { bottom: calc(max(16px, env(safe-area-inset-bottom)) + 68px); }
+}
+
 /* Hero: dark, text left, photo right */
 .hero { padding: 0; background: var(--ink); color: #e9e4de; overflow: hidden; }
 .hero .wrap { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 56px; min-height: min(720px, calc(100vh - var(--header-h))); }
