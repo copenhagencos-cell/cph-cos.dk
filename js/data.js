@@ -104,7 +104,7 @@ window.CPH = {
     { "group": "Booking og praktisk", "q": "Hvilke produkter bruger I?",
       "a": "Vi arbejder med kvalitetsmærker som Dermalogica, Decléor, Lycon, Elleebana og CND. Produkterne er fri for parabener, sulfater og skadelige kemikalier." },
     { "group": "Booking og praktisk", "q": "Kan jeg købe et gavekort?",
-      "a": "Ja. Et gavekort kan bruges til alle behandlinger – ansigtsbehandlinger, vipper og bryn, negle, voks og kropspleje. Bestil det på e-mail copenhagencos@gmail.com eller tlf. 28 68 93 84." },
+      "a": "Ja. Et gavekort kan bruges til alle behandlinger – ansigtsbehandlinger, vipper og bryn, massage og permanent makeup. Bestil det på e-mail copenhagencos@gmail.com eller tlf. 28 68 93 84." },
     { "group": "Ansigtsbehandlinger", "q": "Hvor ofte skal man få en ansigtsbehandling?",
       "a": "Hudens naturlige fornyelse tager ca. 4 uger, så mange får en ansigtsbehandling hver 4.–6. uge. Ved et forløb mod fx akne eller uren hud kan det være oftere i starten. Vi lægger en plan sammen ved første behandling." },
     { "group": "Ansigtsbehandlinger", "q": "Kan en kosmetolog hjælpe mod akne?",
