@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hjemmesiden opdateres | Copenhagen Cosmetology</title>
+<title>Midlertidigt lukket | Copenhagen Cosmetology</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
@@ -95,6 +95,10 @@
     transition: background .2s ease;
   }
   .btn:hover, .btn:focus-visible { background: var(--slate-hover); }
+  .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin: 14px 0 26px; }
+  .actions .btn { margin: 0; min-width: 180px; }
+  .btn-outline { background: transparent; color: var(--slate); box-shadow: inset 0 0 0 2px var(--slate); }
+  .btn-outline:hover, .btn-outline:focus-visible { background: var(--slate); color: var(--white); }
   .btn:focus-visible { outline: 3px solid var(--sand); outline-offset: 3px; }
   .alt-mail { margin: -12px 0 26px; font-size: 16px; color: var(--text-soft); }
   .alt-mail a { color: var(--slate); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; word-break: break-all; }
@@ -108,6 +112,7 @@
   @media (max-width: 480px) {
     body { font-size: 17px; }
     main { padding: 36px 22px; }
+    .actions { flex-direction: column; }
     .btn { display: block; width: 100%; padding: 16px 20px; }
   }
 </style>
@@ -116,14 +121,17 @@
 <main>
   <img class="logo" src="/assets/img/logo-96.png" alt="Copenhagen Cosmetology logo" width="88" height="88">
   <p class="eyebrow">Copenhagen Cosmetology</p>
-  <h1>Hjemmesiden opdateres</h1>
+  <h1>Midlertidigt lukket</h1>
   <hr class="divider">
 
-  <p>Copenhagen Cosmetologys hjemmeside er midlertidigt lukket fra <span class="date">den 20. til og med den 30. november</span>, mens vi opdaterer og forbedrer den.</p>
+  <p>Klinikken holder lukket fra <span class="date">den 20. til og med den 30. november 2026</span>.</p>
 
-  <p class="soft">Vi åbner igen for behandlinger som normalt <span class="date">tirsdag den 1. december 2026</span>. Du er velkommen til at kontakte os, hvis du har spørgsmål eller ønsker at bestille en tid fra den 1. december.</p>
+  <p class="soft">Fra <span class="date">tirsdag den 1. december</span> tilbyder vi igen behandlinger efter aftale. Du kan stadig kontakte os med spørgsmål om behandlinger og allerede nu booke en tid online til den 1. december eller senere.</p>
 
-  <a class="btn" href="mailto:copenhagencos@gmail.com?subject=Henvendelse%20til%20Copenhagen%20Cosmetology">Kontakt os</a>
+  <div class="actions">
+    <a class="btn" href="/booking.html">Book tid</a>
+    <a class="btn btn-outline" href="mailto:copenhagencos@gmail.com?subject=Henvendelse%20til%20Copenhagen%20Cosmetology">Kontakt os</a>
+  </div>
   <p class="alt-mail">eller skriv til <a href="mailto:copenhagencos@gmail.com">copenhagencos@gmail.com</a></p>
 
   <p class="thanks">Tak for din forståelse. Vi glæder os til at se dig igen!</p>
