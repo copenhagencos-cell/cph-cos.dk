@@ -1,218 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="da">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kosmetolog i Herlev – ansigtsbehandling | Copenhagen Cosmetology</title>
-  <!-- SEO -->
-  <meta name="description" content="Kosmetolog i Herlev ved København: ansigtsbehandling mod akne, uren hud og rynker, microneedling, lash lift, brow lamination og permanent makeup. Book online.">
-  <link rel="canonical" href="https://cph-cos.dk/">
-  <link rel="alternate" type="text/markdown" href="https://cph-cos.dk/llms.txt" title="llms.txt">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="da_DK">
-  <meta property="og:site_name" content="Copenhagen Cosmetology">
-  <meta property="og:title" content="Kosmetolog i Herlev – ansigtsbehandling | Copenhagen Cosmetology">
-  <meta property="og:description" content="Kosmetolog i Herlev ved København: ansigtsbehandling mod akne, uren hud og rynker, microneedling, lash lift, brow lamination og permanent makeup. Book online.">
-  <meta property="og:url" content="https://cph-cos.dk/">
-  <meta property="og:image" content="https://cph-cos.dk/assets/img/og-image.jpg">
-  <meta name="theme-color" content="#141414">
-  <!-- /SEO -->
-  <link rel="icon" href="assets/img/favicon.png">
-  <link rel="apple-touch-icon" href="assets/img/icon-180.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Business details for Google. No street address on purpose: the clinic is in a private home. -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BeautySalon",
-    "@id": "https://cph-cos.dk/#business",
-    "name": "Copenhagen Cosmetology",
-    "url": "https://cph-cos.dk/",
-    "logo": "https://cph-cos.dk/assets/img/icon-180.png",
-    "image": "https://cph-cos.dk/assets/img/og-image.jpg",
-    "description": "Lægeeksamineret kosmetolog i Herlev ved København. Ansigtsbehandlinger, microneedling, vipper og bryn, massage og permanent makeup til bryn og læber.",
-    "telephone": "+4528689384",
-    "email": "copenhagencos@gmail.com",
-    "priceRange": "95–1995 kr.",
-    "currenciesAccepted": "DKK",
-    "paymentAccepted": "MobilePay, kontant",
-    "address": { "@type": "PostalAddress", "addressLocality": "Herlev", "addressCountry": "DK" },
-    "areaServed": [
-      { "@type": "City", "name": "Herlev" },
-      { "@type": "City", "name": "København" },
-      { "@type": "City", "name": "Ballerup" },
-      { "@type": "City", "name": "Gladsaxe" }
-    ],
-    "founder": { "@type": "Person", "name": "Phattree Nancy Jensen", "jobTitle": "Kosmetolog og hudterapeut" },
-    "sameAs": ["https://www.instagram.com/nancyjensen231"]
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hjemmesiden opdateres | Copenhagen Cosmetology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f3ef;
+    --bg-deep: #ece5dd;
+    --white: #ffffff;
+    --slate: #2f3b44;
+    --slate-hover: #45535e;
+    --sand: #b7a28d;
+    --sand-dark: #8a735d;
+    --text: #2a2826;
+    --text-soft: #5f5a55;
+    --line: #e2dbd3;
+    --radius: 4px;
+    --radius-lg: 10px;
+    --shadow: 0 12px 32px rgba(20, 20, 20, .08);
+    --font: "Jost", "Segoe UI", system-ui, sans-serif;
   }
-  </script>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 18px;
+    line-height: 1.65;
+  }
+  main {
+    width: 100%;
+    max-width: 620px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .logo {
+    display: block;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 20px;
+  }
+  .eyebrow {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--sand-dark);
+  }
+  h1 {
+    margin: 0 0 24px;
+    font-size: clamp(30px, 6vw, 40px);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--slate);
+  }
+  .divider {
+    width: 56px;
+    height: 2px;
+    margin: 0 auto 28px;
+    background: var(--sand);
+    border: 0;
+  }
+  p { margin: 0 0 18px; }
+  .soft { color: var(--text-soft); }
+  .date { font-weight: 600; color: var(--slate); white-space: nowrap; }
+  .btn {
+    display: inline-block;
+    margin: 14px 0 26px;
+    padding: 16px 40px;
+    min-height: 52px;
+    background: var(--slate);
+    color: var(--white);
+    border-radius: var(--radius);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background .2s ease;
+  }
+  .btn:hover, .btn:focus-visible { background: var(--slate-hover); }
+  .btn:focus-visible { outline: 3px solid var(--sand); outline-offset: 3px; }
+  .alt-mail { margin: -12px 0 26px; font-size: 16px; color: var(--text-soft); }
+  .alt-mail a { color: var(--slate); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; word-break: break-all; }
+  .thanks { margin-bottom: 6px; }
+  .signature {
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: .06em;
+    color: var(--sand-dark);
+  }
+  @media (max-width: 480px) {
+    body { font-size: 17px; }
+    main { padding: 36px 22px; }
+    .btn { display: block; width: 100%; padding: 16px 20px; }
+  }
+</style>
 </head>
-<body data-page="home">
-<!-- BUILD:header -->
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="/"><img src="assets/img/logo-96.png" alt="" width="48" height="48"><span>Copenhagen<small>Cosmetology</small></span></a>
-    <a class="btn header-book" href="booking.html">Book tid</a>
-    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="nav" aria-label="Hovedmenu"><a href="/" aria-current="page">Forside</a><a href="behandlinger.html">Behandlinger &amp; priser</a><a href="tilbud.html">Tilbud -20 %</a><a href="permanent-makeup.html">Permanent makeup</a><a href="om.html">Om mig</a><a href="kontakt.html">Kontakt</a><a class="btn" href="booking.html">Book tid</a></nav>
-  </div>
-</header>
-<!-- /BUILD:header -->
-
+<body>
 <main>
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-text">
-        <h1 class="eyebrow">Kosmetolog & ansigtsbehandling i Herlev</h1>
-        <p class="hero-title">Naturlig skønhed.<br><em>Synlige resultater.</em></p>
-        <p class="lead">Eksklusive ansigtsbehandlinger skræddersyet til din hud – udført med omhu, viden og præcision af lægeeksamineret kosmetolog Phattree Nancy Jensen.</p>
-        <div class="hero-actions">
-          <a class="btn" href="booking.html">Book tid online</a>
-          <a class="btn btn-outline" href="behandlinger.html">Se behandlinger & priser</a>
-          <a class="btn btn-outline" href="tilbud.html">20 % på første besøg</a>
-        </div>
-        <div class="hero-note">
-          <span>10 års erfaring</span>
-          <span>Over 100 glade klienter</span>
-          <span>Dermalogica · Decléor · CND</span>
-        </div>
-      </div>
-      <div class="hero-img"><img src="assets/img/hero.jpg" alt="Kvinde med strålende, sund hud" fetchpriority="high"></div>
-    </div>
-  </section>
+  <img class="logo" src="/assets/img/logo-96.png" alt="Copenhagen Cosmetology logo" width="88" height="88">
+  <p class="eyebrow">Copenhagen Cosmetology</p>
+  <h1>Hjemmesiden opdateres</h1>
+  <hr class="divider">
 
-  <div class="trust">
-    <div class="wrap">
-      <span>Lægeeksamineret kosmetolog</span>
-      <span>Skræddersyet til din hud</span>
-      <span><a href="tilbud.html">Ny kunde: 20 % på første besøg</a></span>
-    </div>
-  </div>
+  <p>Copenhagen Cosmetologys hjemmeside er midlertidigt lukket fra <span class="date">den 20. til og med den 30. november</span>, mens vi opdaterer og forbedrer den.</p>
 
-  <section>
-    <div class="wrap center">
-      <span class="eyebrow">Velkommen</span>
-      <h2 class="reveal">Hos Copenhagen Cosmetology er du i fokus</h2>
-      <p class="lead reveal">Velkommen til et sted med ro, skønhed og omsorg. Jeg tilbyder professionelle skønhedsbehandlinger i trygge og hjemlige omgivelser – altid tilpasset dig og din huds behov. Her er plads til nærvær, kvalitet og naturlige resultater.</p>
-      <p class="reveal muted">Kunder fra Herlev, Ballerup, Gladsaxe, Rødovre, Husum, Brønshøj og Bagsværd. Adressen oplyses ved bekræftet booking.</p>
+  <p class="soft">Vi åbner igen for behandlinger som normalt <span class="date">tirsdag den 1. december 2026</span>. Du er velkommen til at kontakte os, hvis du har spørgsmål eller ønsker at bestille en tid fra den 1. december.</p>
 
-      <div class="cards" id="cards">
-<!-- BUILD:cards -->
-<a class="card" href="ansigtsbehandling-kobenhavn.html"><img src="assets/img/ansigt.jpg" alt="Ansigtsbehandlinger i Herlev" loading="lazy"><div class="card-body"><h3>Ansigtsbehandlinger</h3><p>Professionelle ansigtsbehandlinger tilpasset din hudtype og dine behov – fra en hurtig opfriskning til avanceret microneedling.</p><span class="card-link">Se priser →</span></div></a>
-<a class="card" href="vipper-og-bryn.html"><img src="assets/img/bryn.jpg" alt="Vipper &amp; Bryn i Herlev" loading="lazy"><div class="card-body"><h3>Vipper &amp; Bryn</h3><p>Lash lift, brow lamination og farvning af vipper og bryn, der fremhæver dit blik med et naturligt og holdbart resultat.</p><span class="card-link">Se priser →</span></div></a>
-<a class="card" href="behandlinger.html#krop"><img src="assets/img/krop.jpg" alt="Massage i Herlev" loading="lazy"><div class="card-body"><h3>Massage</h3><p>Afslappende aromamassage, der giver ro, balance og ny energi. Massagen tilbydes kun til kvinder.</p><span class="card-link">Se priser →</span></div></a>
-<a class="card" href="permanent-makeup.html"><img src="assets/img/pmu.jpg" alt="Permanent makeup – bryn i Herlev" loading="lazy"><div class="card-body"><h3>Permanent makeup – bryn</h3><p>Powder/ombré brows, combo brows og Blade + Shade udført af certificeret kosmetisk tatovør – naturlige, velformede bryn, der holder i 1–2 år.</p><span class="card-link">Se priser →</span></div></a>
-<!-- /BUILD:cards -->
-      </div>
-    </div>
-  </section>
+  <a class="btn" href="mailto:copenhagencos@gmail.com?subject=Henvendelse%20til%20Copenhagen%20Cosmetology">Kontakt os</a>
+  <p class="alt-mail">eller skriv til <a href="mailto:copenhagencos@gmail.com">copenhagencos@gmail.com</a></p>
 
-  <section class="bg-white">
-    <div class="wrap split">
-      <img class="reveal" src="assets/img/behandling.jpg" alt="Trin i en ansigtsbehandling: serum, microneedling, LED-lys, maske og massage">
-      <div class="reveal">
-        <span class="eyebrow">Signaturbehandling</span>
-        <h2>Advanced ProFace Microneedling</h2>
-        <p>En behandling jeg selv har udviklet – med fokus på synlige resultater, naturlig velvære og langvarig effekt. Den giver opstramning, glød og cellefornyelse.</p>
-        <ul class="ticks">
-          <li>Dobbelt rens og hudanalyse</li>
-          <li>Eksfolierende peeling og ProFace løftende massage</li>
-          <li>Microneedling med aktivt serum</li>
-          <li>Maske, LED-lysterapi og afsluttende SPF</li>
-          <li>Personlig vejledning i hjemmepleje</li>
-        </ul>
-        <a class="btn" href="booking.html?service=advanced">Book signaturbehandlingen</a>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap center">
-      <span class="eyebrow">Derfor Copenhagen Cosmetology</span>
-      <h2 class="reveal">Ren, ærlig og bæredygtig skønhed</h2>
-      <div class="values">
-        <div class="value reveal"><strong>10 år</strong>i branchen med behandlinger udført med omhu og præcision</div>
-        <div class="value reveal"><strong>100%</strong>fri for parabener, sulfater og skadelige kemikalier</div>
-        <div class="value reveal"><strong>Lægeeksamineret</strong>kosmetolog med løbende efteruddannelse</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-deep">
-    <div class="wrap center">
-      <span class="eyebrow">Klienternes oplevelser</span>
-      <h2 class="reveal">Hvad mine klienter siger</h2>
-      <div class="quotes">
-        <figure class="quote reveal">
-          <p>“Jeg blev henvist til Nancy af min læge, da jeg lider af psoriasis. Takket være Nancys knowhow har vi holdt flare-ups nede i et år nu.”</p>
-          <cite>Julie T.</cite>
-        </figure>
-        <figure class="quote reveal">
-          <p>“Jeg har fået behandlinger regelmæssigt i over 2 år og har for alvor kunnet forbedre min cystiske acne. Hun ved virkelig, hvad hun laver.”</p>
-          <cite>Fast klient</cite>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-white">
-    <div class="wrap split">
-      <div class="reveal">
-        <span class="eyebrow">Om mig</span>
-        <h2>Phattree Nancy Jensen</h2>
-        <p>Min fascination af hudpleje startede i en ung alder. Da jeg selv overvandt en hudsygdom, opstod en ny passion: at hjælpe andre med at opnå den smukke og sunde hud, de drømmer om.</p>
-        <p>Som lægeeksamineret kosmetolog tilbyder jeg skræddersyede behandlinger baseret på dine unikke behov – med en holistisk tilgang og ægte dedikation til din tilfredshed.</p>
-        <a class="btn btn-outline" href="om.html">Læs mere om mig</a>
-      </div>
-      <img class="reveal portrait" src="assets/img/nancy-forside.jpg" alt="Phattree Nancy Jensen, kosmetolog" width="743" height="1280" loading="lazy">
-    </div>
-  </section>
-
-  <section class="cta-band">
-    <div class="wrap">
-      <h2>Klar til at forkæle din hud?</h2>
-      <p class="lead">Vælg behandling, dag og tidspunkt – det tager under et minut.</p>
-      <a class="btn" href="booking.html">Book din tid nu</a>
-    </div>
-  </section>
+  <p class="thanks">Tak for din forståelse. Vi glæder os til at se dig igen!</p>
+  <p class="signature">Copenhagen Cosmetology</p>
 </main>
-
-<!-- BUILD:footer -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div><h4>Copenhagen Cosmetology</h4>
-        <p>Professionelle skønhedsbehandlinger i Herlev og Københavns omegn. Behandlinger udføres midlertidigt i diskrete og trygge omgivelser, mens vi søger godkendt kliniklokale. Adressen oplyses ved bekræftet booking.</p></div>
-      <div><h4>Kontakt</h4><ul>
-        <li><a href="tel:+4528689384">Tlf. 28 68 93 84</a></li>
-        <li><a href="https://wa.me/4528689384" target="_blank" rel="noopener">WhatsApp</a></li>
-        <li><a href="mailto:copenhagencos@gmail.com">copenhagencos@gmail.com</a></li>
-        <li><a href="https://www.instagram.com/nancyjensen231" target="_blank" rel="noopener">Instagram</a></li></ul></div>
-      <div><h4>Tider</h4><ul>
-        <li>Efter aftale – ingen faste åbningstider</li><li><a href="booking.html">Book online døgnet rundt</a></li></ul></div>
-      <div><h4>Information</h4><ul>
-        <li><a href="booking.html">Book tid</a></li>
-        <li><a href="behandlinger.html">Behandlinger & priser</a></li>
-        <li><a href="tilbud.html">Tilbud: 20 % på første besøg</a></li>
-        <li><a href="ansigtsbehandling-kobenhavn.html">Ansigtsbehandling & microneedling</a></li>
-        <li><a href="vipper-og-bryn.html">Lash lift & brow lamination</a></li>
-        <li><a href="permanent-makeup.html">Permanent makeup bryn</a></li>
-        <li><a href="faq.html">Spørgsmål & svar</a></li>
-        <li><a href="kontakt.html#gavekort">Gavekort</a></li>
-        <li><a href="handelsbetingelser.html">Handelsbetingelser & afbud</a></li>
-        <li><a href="privatlivspolitik.html">Privatlivspolitik</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><span>© 2026 Copenhagen Cosmetology · CVR 41512598</span><span>Betal nemt med MobilePay</span></div>
-  </div>
-</footer>
-<a class="btn float-book" href="booking.html">Book tid online</a>
-<a class="float-wa" href="https://wa.me/4528689384" target="_blank" rel="noopener" aria-label="Skriv til os på WhatsApp"><svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
-<!-- /BUILD:footer -->
-
-<script src="js/layout.js"></script>
 </body>
 </html>
